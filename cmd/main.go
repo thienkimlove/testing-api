@@ -3,17 +3,16 @@ package main
 import (
 	"log"
 	"os"
+	"testing-api/config"
+	"testing-api/rpcimpl"
+	"testing-api/rpcimpl/server"
 
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_zap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
 	grpc_ctxtags "github.com/grpc-ecosystem/go-grpc-middleware/tags"
 	"github.com/spf13/cobra"
 	"go.uber.org/zap"
-
 	"go.tekoapis.com/kitchen/database/migrate"
-	"go.tekoapis.com/testing/config"
-	"go.tekoapis.com/testing/rpcimpl"
-	"go.tekoapis.com/testing/rpcimpl/server"
 )
 
 func main() {

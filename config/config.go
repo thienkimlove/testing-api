@@ -4,11 +4,11 @@ import (
 	"bytes"
 	"encoding/json"
 	"strings"
+	"testing-api/rpcimpl/server"
 
 	"github.com/spf13/viper"
 	"go.tekoapis.com/kitchen/database"
 	"go.tekoapis.com/kitchen/log"
-	"go.tekoapis.com/testing/rpcimpl/server"
 )
 
 type Config struct {
