@@ -13,3 +13,8 @@ func (h *ListingServer) ListingRq(ctx context.Context, message *listing.ListingR
 	level.Info(ctx).L("This is example log by grpc from listing")
 	return &listing.ListingResponse{Content: "hello, reply from "}, nil
 }
+
+func (h *ListingServer) ListingRq2(ctx context.Context, message *listing.ListingRequest) (*listing.ListingResponse2, error){
+	level.Info(ctx).L("This is example log by grpc from listing2")
+	return &listing.ListingResponse2{Content2: "hello, reply from  ListingRq2"}, nil
+}
