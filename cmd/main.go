@@ -1,11 +1,11 @@
 package main
 
 import (
+	"github.com/thienkimlove/testing-api/config"
+	"github.com/thienkimlove/testing-api/rpcimpl"
+	"github.com/thienkimlove/testing-api/rpcimpl/server"
 	"log"
 	"os"
-	"testing-api/config"
-	"testing-api/rpcimpl"
-	"testing-api/rpcimpl/server"
 
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_zap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
@@ -58,8 +58,9 @@ func run(args []string) error {
 			// s.Register(server1, server2, server3)
 			//
 			healthServer := &rpcimpl.HealthServer{}
+			listingServer := &rpcimpl.ListingServer{}
 
-			if err := s.Register(healthServer); err != nil {
+			if err := s.Register(healthServer, listingServer); err != nil {
 				logger.Fatal("Error register servers", zap.Any("error", err))
 			}
 

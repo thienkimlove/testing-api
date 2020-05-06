@@ -3,7 +3,7 @@
 //   protoc 3.11.4
 // sources:
 //   health/v1/health.proto
-//   sample/v1/sample.proto
+//   listing/v1/service.proto
 
 package server
 
@@ -13,13 +13,13 @@ import (
 	go_grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
 	runtime "github.com/grpc-ecosystem/grpc-gateway/runtime"
 	promhttp "github.com/prometheus/client_golang/prometheus/promhttp"
+	listing "github.com/thienkimlove/testing-api/custom_rpc/listing"
 	grpc "google.golang.org/grpc"
 	net "net"
 	http "net/http"
 	os "os"
 	signal "os/signal"
 	health "rpc.tekoapis.com/rpc/health"
-	sample "rpc.tekoapis.com/rpc/sample"
 	syscall "syscall"
 	time "time"
 )
@@ -75,9 +75,9 @@ func (s *Server) Register(grpcServer ...interface{}) error {
 			if err := health.RegisterHealthCheckServiceHandlerFromEndpoint(context.Background(), s.mux, s.cfg.GRPC.String(), []grpc.DialOption{grpc.WithInsecure()}); err != nil {
 				return err
 			}
-		case sample.SampleServiceServer:
-			sample.RegisterSampleServiceServer(s.gRPC, _srv)
-			if err := sample.RegisterSampleServiceHandlerFromEndpoint(context.Background(), s.mux, s.cfg.GRPC.String(), []grpc.DialOption{grpc.WithInsecure()}); err != nil {
+		case listing.ListingServiceServer:
+			listing.RegisterListingServiceServer(s.gRPC, _srv)
+			if err := listing.RegisterListingServiceHandlerFromEndpoint(context.Background(), s.mux, s.cfg.GRPC.String(), []grpc.DialOption{grpc.WithInsecure()}); err != nil {
 				return err
 			}
 		default:

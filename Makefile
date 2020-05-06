@@ -1,5 +1,5 @@
 # List of implements server
-SERVERS = health/v1/health.proto sample/v1/sample.proto
+SERVERS = health/v1/health.proto listing/v1/service.proto
 # Enable grpc gateway
 GATEWAY = true
 

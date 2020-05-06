@@ -3,8 +3,8 @@ package config
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/thienkimlove/testing-api/rpcimpl/server"
 	"strings"
-	"testing-api/rpcimpl/server"
 
 	"github.com/spf13/viper"
 	"go.tekoapis.com/kitchen/database"
